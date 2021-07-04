@@ -31,14 +31,23 @@ public class Test {
 //        postComun.setComentarios(null);
 //        postComun.setUsuario(null);
 //        fachada.guardarPost(postComun);
- 
-        List<Municipio> listaMunicipios = new ArrayList<>();
-        Estado estado = new Estado();
-        estado.setNombre("Sonora");
-        Municipio municipio = new Municipio("Obregon", estado);
-        listaMunicipios.add(municipio);
-        estado.setMunicipios(listaMunicipios);
-        fachada.guardarEstado(estado);
+        fachada.eliminarEstado(4);
+        fachada.eliminarEstado(3);
+//        List<Municipio> listaMunicipios = new ArrayList<>();
+//        Estado estado = new Estado();
+//        estado.setNombre("Sonora");
+//        Municipio municipio = new Municipio("Obregon", estado);
+//        listaMunicipios.add(municipio);
+//        Municipio municipio2 = new Municipio("Hermosillo", estado);
+//        listaMunicipios.add(municipio2);
+//        Municipio municipio3 = new Municipio("Guaymas", estado);
+//        listaMunicipios.add(municipio3);
+//        Municipio municipio4 = new Municipio("Nogales", estado);
+//        listaMunicipios.add(municipio4);
+//        Municipio municipio5 = new Municipio("Navojoa", estado);
+//        listaMunicipios.add(municipio5);
+//        estado.setMunicipios(listaMunicipios);
+//        fachada.guardarEstado(estado);
 //
 //        Usuario usuarioAdmin = FabricaUsuario.getUser(TiposUsuarios.ADMIN.toString());
 //        usuarioAdmin.setCiudad(municipio);
@@ -76,8 +85,7 @@ public class Test {
 //        usuarioAdmin.setFechaNacimiento(new Date());
 //        
 //        fachada.guardarAdmor((Admor) usuarioAdmin);
-        
-        
+
 //        AdmorRepository admorDAO = new AdmorRepository();
 //        
 //        List<Anclado> listaAnclados = new ArrayList<>();

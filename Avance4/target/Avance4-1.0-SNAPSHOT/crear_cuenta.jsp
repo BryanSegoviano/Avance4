@@ -40,25 +40,23 @@
                     <input required type="file" name="avatar" accept="image/*" formenctype="multipart/form-data">
                     <p></p>
                     <div class="label_ubicacion">
-                        <label for="estado">Estado: </label><select required name="estado" id="estado">
+                        <label for="estado">Estado: </label>
+                        <select required name="estado" id="estado" onchange="handleOnChange()">
                             <option value="Sonora">Sonora</option>
                             <option value="Sinaloa">Sinaloa</option>
+                            <option value="Chihuahua">Chihuahua </option>
+                            <option value="Baja California">Baja California </option>
                         </select>
 
                     </div>
                     <div>
                         <label>Municipio: </label>
-                        <select name="municipio" id="registro_ciudad">
-                            <optgroup label="Sonora">
-                                <option value="Obregon">Obregon</option>
-                                <option value="Hermosillo">Hermosillo</option>
-                                <option value="Navojoa">Navojoa</option>
-                            </optgroup>
-                            <optgroup label="Sinaloa">
-                                <option value="Los Mochis">Los Mochis</option>
-                                <option value="Culiacán"> Culiacán</option>
-                                <option value="Guasave">Guasave</option>
-                            </optgroup>
+                        <select name="municipio" id="registro_ciudad" required>
+                            <option value="Obregon">Ciudad Obregón</option>
+                            <option value="Hermosillo">Hermosillo</option>
+                            <option value="Guaymas">Guaymas</option>
+                            <option value="Nogales">Nogales</option>
+                            <option value="Navojoa">Navojoa</option>
                         </select>
                     </div>
                     <p></p>
@@ -73,5 +71,6 @@
                 </form>
             </section>
         </main>
+        <script src="handleOnChange.js"></script>
     </body>
 </html>
