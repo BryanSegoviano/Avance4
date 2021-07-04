@@ -31,7 +31,7 @@ public class Test {
 //        postComun.setComentarios(null);
 //        postComun.setUsuario(null);
 //        fachada.guardarPost(postComun);
-
+ 
         List<Municipio> listaMunicipios = new ArrayList<>();
         Estado estado = new Estado();
         estado.setNombre("Sonora");
@@ -39,43 +39,43 @@ public class Test {
         listaMunicipios.add(municipio);
         estado.setMunicipios(listaMunicipios);
         fachada.guardarEstado(estado);
-
-        Usuario usuarioAdmin = FabricaUsuario.getUser(TiposUsuarios.ADMIN.toString());
-        usuarioAdmin.setCiudad(municipio);
-        usuarioAdmin.setContrasenia("Password");
-        usuarioAdmin.setAvatar(null);
-        usuarioAdmin.setEmail("ponchito@potros.com");
-        usuarioAdmin.setGenero(Genero.HOMBRE);
-        usuarioAdmin.setNombreCompleto("Alfonso Sempai");
-        usuarioAdmin.setTelefono("64466666");
-
-        List<Comentario> listaComentarios = new ArrayList<>();
-        
-        List<Comun> listaPostComun = new ArrayList<>();
-        Comun postcomun1 = new Comun();
-        postcomun1.setUsuario(usuarioAdmin);
-        postcomun1.setContenido("Hola amigos ya estamos en vivo");
-        postcomun1.setFechaHoraCreacion(new Date());
-        postcomun1.setFechaHoraEdicion(null);
-        postcomun1.setTitulo("1");
-        postcomun1.setComentarios(listaComentarios);
-        
-        Comun postcomun2 = new Comun();
-        postcomun2.setUsuario(usuarioAdmin);
-        postcomun2.setContenido("Se cancela hay covid");
-        postcomun2.setFechaHoraCreacion(new Date());
-        postcomun2.setFechaHoraEdicion(null);
-        postcomun2.setTitulo("2");
-        postcomun2.setComentarios(listaComentarios);
-        
-
-        listaPostComun.add(postcomun1);
-        listaPostComun.add(postcomun2);
-
-        usuarioAdmin.setComunes(listaPostComun);
-        usuarioAdmin.setFechaNacimiento(new Date());
-        
-        fachada.guardarAdmor((Admor) usuarioAdmin);
+//
+//        Usuario usuarioAdmin = FabricaUsuario.getUser(TiposUsuarios.ADMIN.toString());
+//        usuarioAdmin.setCiudad(municipio);
+//        usuarioAdmin.setContrasenia("Password");
+//        usuarioAdmin.setAvatar(null);
+//        usuarioAdmin.setEmail("ponchito@potros.com");
+//        usuarioAdmin.setGenero(Genero.HOMBRE);
+//        usuarioAdmin.setNombreCompleto("Alfonso Sempai");
+//        usuarioAdmin.setTelefono("64466666");
+//
+//        List<Comentario> listaComentarios = new ArrayList<>();
+//        
+//        List<Comun> listaPostComun = new ArrayList<>();
+//        Comun postcomun1 = new Comun();
+//        postcomun1.setUsuario(usuarioAdmin);
+//        postcomun1.setContenido("Hola amigos ya estamos en vivo");
+//        postcomun1.setFechaHoraCreacion(new Date());
+//        postcomun1.setFechaHoraEdicion(null);
+//        postcomun1.setTitulo("1");
+//        postcomun1.setComentarios(listaComentarios);
+//        
+//        Comun postcomun2 = new Comun();
+//        postcomun2.setUsuario(usuarioAdmin);
+//        postcomun2.setContenido("Se cancela hay covid");
+//        postcomun2.setFechaHoraCreacion(new Date());
+//        postcomun2.setFechaHoraEdicion(null);
+//        postcomun2.setTitulo("2");
+//        postcomun2.setComentarios(listaComentarios);
+//        
+//
+//        listaPostComun.add(postcomun1);
+//        listaPostComun.add(postcomun2);
+//
+//        usuarioAdmin.setComunes(listaPostComun);
+//        usuarioAdmin.setFechaNacimiento(new Date());
+//        
+//        fachada.guardarAdmor((Admor) usuarioAdmin);
         
         
 //        AdmorRepository admorDAO = new AdmorRepository();

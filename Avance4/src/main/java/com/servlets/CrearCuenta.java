@@ -7,6 +7,7 @@ package com.servlets;
 
 import controles.FabricaFachadaControl;
 import controles.IFachada;
+import dominio.Admor;
 import dominio.Municipio;
 import dominio.Normal;
 import dominio.Usuario;
@@ -34,15 +35,6 @@ public class CrearCuenta extends HttpServlet {
 
     private final IFachada fachada = FabricaFachadaControl.getInstance();
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -92,38 +84,34 @@ public class CrearCuenta extends HttpServlet {
         String genero = request.getParameter("genero");
         String telefono = request.getParameter("telefono");
         String fechaNacimiento = request.getParameter("fechaNacimiento");
-        String estado = request.getParameter("estado");
         String municipio = request.getParameter("municipio");
         String correo = request.getParameter("correoElectronico");
         String contrasenia = request.getParameter("contrasenia");
 //        Part avatar = request.getPart("avatar");
-
+        PrintWriter out = response.getWriter();
         Genero generoEnum = getGeneroEnum(genero);
         Date fechaConvertida = FechaConvertida(fechaNacimiento);
         Municipio municipioConvertido = getMunicipio(municipio);
 //        byte[] avatarConvertido = imagenConvertida(avatar);
+        boolean existenciaCorreo = verificarCorreo(correo);
+        if (existenciaCorreo) {
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Correo ya existente');");
+            out.println("location='crear_cuenta.jsp'");
+            out.println("</script>");
+        } else {
+            Usuario nuevoUsuario = new Normal(nombre + " " + apellido,
+                    correo,
+                    contrasenia,
+                    telefono,
+                    municipioConvertido,
+                    fechaConvertida,
+                    generoEnum);
 
-        Usuario nuevoUsuario = new Normal(nombre,
-                correo,
-                contrasenia,
-                telefono,
-                municipioConvertido,
-                fechaConvertida,
-                generoEnum);
-        
-        System.out.println(nuevoUsuario);
-        fachada.guardarNormal((Normal) nuevoUsuario);
-        request.getRequestDispatcher("index.html").forward(request, response);
-        
-//        System.out.println(nombre);
-//        System.out.println(apellido);
-//        System.out.println(generoEnum);
-//        System.out.println(telefono);
-//        System.out.println(fechaConvertida);
-//        System.out.println(estado);
-//        System.out.println(municipioConvertido);
-//        System.out.println(correo);
-//        System.out.println(contrasenia);
+            fachada.guardarNormal((Normal) nuevoUsuario);
+            request.getRequestDispatcher("index.html").forward(request, response);
+        }
+        //request.getRequestDispatcher("crear_cuenta.jsp").forward(request, response);
     }
 
     /**
@@ -169,4 +157,20 @@ public class CrearCuenta extends HttpServlet {
         return null;
     }
 
+    private boolean verificarCorreo(String correo) {
+        List<Normal> listaNormal = fachada.buscarTodasNormal();
+        List<Admor> listaAdmon = fachada.buscarTodasAdmor();
+        for (Admor admor : listaAdmon) {
+            if (admor.getEmail().equals(correo)) {
+                return true;
+            }
+        }
+
+        for (Normal normal : listaNormal) {
+            if (normal.getEmail().equals(correo)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

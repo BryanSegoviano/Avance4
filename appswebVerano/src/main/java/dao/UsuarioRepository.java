@@ -113,7 +113,7 @@ class UsuarioRepository extends BaseRepository<Usuario> {
         CriteriaBuilder builder = em.getCriteriaBuilder();
         CriteriaQuery<Usuario> cq = builder.createQuery(Usuario.class);
         Root<Usuario> root = cq.from(Usuario.class);
-        cq = cq.select(root).where(builder.like(root.get("nombreCompleto"), "%" + busqueda + "%"));
+        cq = cq.select(root).where(builder.like(root.get("email"), "%" + busqueda + "%"));
         TypedQuery<Usuario> typedQuery = em.createQuery(cq);
         ArrayList<Usuario> admins = new ArrayList<>(typedQuery.getResultList());
         em.getTransaction().commit();

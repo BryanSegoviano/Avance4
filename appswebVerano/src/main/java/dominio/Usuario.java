@@ -46,7 +46,7 @@ public abstract class Usuario implements Serializable {
     @Column(name="nombreCompleto",nullable = false)
     protected String nombreCompleto;
     
-    @Column(name="email",nullable = false)
+    @Column(name="email",nullable = false, unique = true)
     protected String email;
     
     @Column(name="contrasenia",nullable = false)

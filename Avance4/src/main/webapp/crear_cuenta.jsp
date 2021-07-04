@@ -27,7 +27,7 @@
                     </div>
                     <p></p>
                     <label class="sexo">Hombre </label> 
-                    <input type="radio" name="genero" id="checkboxH" value="HOMBRE">
+                    <input type="radio" name="genero" checked id="checkboxH" value="HOMBRE">
                     <label class="sexo"> Mujer</label>
                     <input type="radio" name="genero" id="checkboxM" value="MUJER">
                     <p></p>
