@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class IniciarSesion extends HttpServlet {
 
@@ -36,12 +37,15 @@ public class IniciarSesion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        System.out.println("entro al get de iniciar sesion");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession session = request.getSession();
+        
         String correo = request.getParameter("txtcorreo");
         String pass = request.getParameter("txtpassword");
 
@@ -49,18 +53,18 @@ public class IniciarSesion extends HttpServlet {
         List<Admor> listaAdmon = fachada.buscarTodasAdmor();
         for (Admor admor : listaAdmon) {
             if (admor.getEmail().equals(correo) && admor.getContrasenia().equals(pass)) {
-                request.setAttribute("admin", admor);
-                request.getRequestDispatcher("postAdmin.html").forward(request, response);
+                session.setAttribute("admin", admor);
+                request.getRequestDispatcher("postAdmin.jsp").forward(request, response);
             }
         }
-        
+
         for (Normal normal : listaNormal) {
             if (normal.getEmail().equals(correo) && normal.getContrasenia().equals(pass)) {
-                request.setAttribute("normal", normal);
-                request.getRequestDispatcher("postNormal.html").forward(request, response);
+                session.setAttribute("normal", normal);
+                request.getRequestDispatcher("postNormal.jsp").forward(request, response);
             }
         }
-        
+
         response.sendRedirect("index.html");
     }
 
