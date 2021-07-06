@@ -38,7 +38,7 @@
                     <p></p>
                     
                     <label>Avatar:</label>
-                    <input type="file" name="avatar" accept="image/*" formenctype="multipart/form-data" required>
+                    <input type="file" name="avatar" accept="image/*" formenctype="multipart/form-data">
                     
                     <p></p>
                     <div class="label_ubicacion">
