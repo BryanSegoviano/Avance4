@@ -20,7 +20,7 @@
                     nueva</label>
             </header>
             <section>
-                <form action="CrearCuenta" method="POST" id="formulario_registro" class="registro">
+                <form action="CrearCuenta" method="POST" id="formulario_registro" class="registro" enctype="multipart/form-data">
                     <div class="nombre">
                         <input type="text" placeholder="Nombre" required id="registro_nombre" name="nombre">
                         <input type="text" placeholder="Apellidos" required id="registro_apellidos" name="apellido">
@@ -36,8 +36,10 @@
                     <label>Fecha de nacimiento: </label>
                     <input type="date" name="fechaNacimiento" required/>
                     <p></p>
+                    
                     <label>Avatar:</label>
-                    <input required type="file" name="avatar" accept="image/*" formenctype="multipart/form-data">
+                    <input type="file" name="avatar" accept="image/*" formenctype="multipart/form-data" required>
+                    
                     <p></p>
                     <div class="label_ubicacion">
                         <label for="estado">Estado: </label>

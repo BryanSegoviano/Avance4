@@ -86,6 +86,16 @@ public abstract class Usuario implements Serializable {
         this.genero = genero;
     }
 
+    public Usuario(String nombreCompleto, String contrasenia, String telefono, byte[] avatar, Municipio ciudad, Date fechaNacimiento, Genero genero) {
+        this.nombreCompleto = nombreCompleto;
+        this.contrasenia = contrasenia;
+        this.telefono = telefono;
+        this.avatar = avatar;
+        this.ciudad = ciudad;
+        this.fechaNacimiento = fechaNacimiento;
+        this.genero = genero;
+    }
+    
     public Long getIdusuario() {
         return idusuario;
     }

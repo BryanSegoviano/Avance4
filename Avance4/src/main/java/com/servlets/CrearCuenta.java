@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.servlets;
 
 import controles.FabricaFachadaControl;
@@ -15,22 +10,19 @@ import dominio.enums.Genero;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import org.apache.commons.io.IOUtils;
 
-/**
- *
- * @author Bryan
- */
+@MultipartConfig
 public class CrearCuenta extends HttpServlet {
 
     private final IFachada fachada = FabricaFachadaControl.getInstance();
@@ -87,12 +79,17 @@ public class CrearCuenta extends HttpServlet {
         String municipio = request.getParameter("municipio");
         String correo = request.getParameter("correoElectronico");
         String contrasenia = request.getParameter("contrasenia");
-//        Part avatar = request.getPart("avatar");
+        
+        Part avatar = request.getPart("avatar");
+        
+        byte[] avatarConvertido = imagenConvertida(avatar);
+        System.out.println(avatarConvertido);
+        
         PrintWriter out = response.getWriter();
         Genero generoEnum = getGeneroEnum(genero);
         Date fechaConvertida = FechaConvertida(fechaNacimiento);
         Municipio municipioConvertido = getMunicipio(municipio);
-//        byte[] avatarConvertido = imagenConvertida(avatar);
+        
         boolean existenciaCorreo = verificarCorreo(correo);
         if (existenciaCorreo) {
             out.println("<script type=\"text/javascript\">");
@@ -107,7 +104,8 @@ public class CrearCuenta extends HttpServlet {
                     municipioConvertido,
                     fechaConvertida,
                     generoEnum);
-
+            nuevoUsuario.setAvatar(avatarConvertido);
+            
             fachada.guardarNormal((Normal) nuevoUsuario);
             request.getRequestDispatcher("index.html").forward(request, response);
         }

@@ -1,3 +1,7 @@
+<%@page import="com.utils.CargarImagen"%>
+<%@page import="dominio.Usuario"%>
+<%@page import="java.util.Base64"%>
+<%@page import="dominio.Normal"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,15 +16,15 @@
     </head>
 
     <body>
-        
+
         <c:if test="${normal == null}">
             <c:redirect url="index.html"></c:redirect>
         </c:if>
-        
+
         <main id="main">
             <section id="datos">
-                <figure>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png" alt="usuario" id="userImg" />
+                <figure>                   
+                    <%out.print(CargarImagen.cargarImagen((Normal) session.getAttribute("normal")));%>                           
                 </figure>
                 <p>${normal.getNombreCompleto()} - Normal</p>
                 <a href="publicar.jsp"><input type="button" value="Publicar" id="publicar-btn" class="buttons" /></a>

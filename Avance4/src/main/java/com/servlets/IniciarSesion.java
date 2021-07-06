@@ -37,23 +37,26 @@ public class IniciarSesion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("entro al get de iniciar sesion");
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession();
-        
+
         String correo = request.getParameter("txtcorreo");
         String pass = request.getParameter("txtpassword");
-
+        boolean redireccion = true;
+        
         List<Normal> listaNormal = fachada.buscarTodasNormal();
         List<Admor> listaAdmon = fachada.buscarTodasAdmor();
+        
         for (Admor admor : listaAdmon) {
             if (admor.getEmail().equals(correo) && admor.getContrasenia().equals(pass)) {
                 session.setAttribute("admin", admor);
+                redireccion = false;
                 request.getRequestDispatcher("postAdmin.jsp").forward(request, response);
             }
         }
@@ -61,11 +64,15 @@ public class IniciarSesion extends HttpServlet {
         for (Normal normal : listaNormal) {
             if (normal.getEmail().equals(correo) && normal.getContrasenia().equals(pass)) {
                 session.setAttribute("normal", normal);
+                redireccion = false;
                 request.getRequestDispatcher("postNormal.jsp").forward(request, response);
             }
         }
-
-        response.sendRedirect("index.html");
+        
+        if (redireccion) {
+            response.sendRedirect("index.html");
+        }
+        
     }
 
     /**
