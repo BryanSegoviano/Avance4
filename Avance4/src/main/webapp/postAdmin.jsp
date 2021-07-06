@@ -27,8 +27,9 @@
                 </figure>
                 <p>${admin.getNombreCompleto()} - Admin</p>
                 <a href="publicar.jsp"><input type="button" value="Publicar" id="publicar-btn" class="buttons" /></a>
-                <a href="index.html"><input type="button" value="Cerrar Sesion" id="cerrar-sesion-btn"
-                                            class="buttons" /></a>
+                <a href="index.html">
+                   <input type="button" value="Cerrar Sesion" id="cerrar-sesion-btn" class="buttons" />   
+                </a>
             </section>
             <section id="posts">
                 <header>
