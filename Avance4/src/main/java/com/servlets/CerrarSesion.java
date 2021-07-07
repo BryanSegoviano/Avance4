@@ -56,9 +56,8 @@ public class CerrarSesion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getSession().removeAttribute("normal");
-        request.getSession().removeAttribute("admin");
-        response.sendRedirect("index.html");
+            request.getSession().invalidate();
+            response.sendRedirect("index.html");
     }
 
     /**
