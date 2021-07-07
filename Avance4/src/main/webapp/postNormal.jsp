@@ -1,6 +1,4 @@
 <%@page import="com.utils.CargarImagen"%>
-<%@page import="dominio.Usuario"%>
-<%@page import="java.util.Base64"%>
 <%@page import="dominio.Normal"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

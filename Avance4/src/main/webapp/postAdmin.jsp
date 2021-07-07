@@ -1,6 +1,7 @@
+<%@page import="com.utils.CargarImagen"%>
+<%@page import="dominio.Admor"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,8 +23,7 @@
         <main id="main">
             <section id="datos">
                 <figure>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png" alt="usuario"
-                         id="userImg" />
+                    <%out.print(CargarImagen.cargarImagen((Admor) session.getAttribute("admin")));%>     
                 </figure>
                 <p>${admin.getNombreCompleto()} - Admin</p>
                 <a href="publicar.jsp"><input type="button" value="Publicar" id="publicar-btn" class="buttons" /></a>
