@@ -70,7 +70,7 @@ public class CrearCuenta extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+         
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
         String genero = request.getParameter("genero");
@@ -107,7 +107,7 @@ public class CrearCuenta extends HttpServlet {
             nuevoUsuario.setAvatar(avatarConvertido);
             
             fachada.guardarNormal((Normal) nuevoUsuario);
-            request.getRequestDispatcher("index.html").forward(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         //request.getRequestDispatcher("crear_cuenta.jsp").forward(request, response);
     }

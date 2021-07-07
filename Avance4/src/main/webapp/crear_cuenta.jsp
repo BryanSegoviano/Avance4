@@ -67,8 +67,8 @@
                     <p></p>
                     <input type="password" placeholder="Contraseña" name="contrasenia" id="registro_contra">
                     <footer>
-                        <a href="index.html"><input type="submit" value="Registrarse" id="registrarse"></a>
-                        <a href="index.html"><input type="button" value="Cancelar" id="cancelar"></a>
+                        <input type="submit" value="Registrarse" id="registrarse">
+                        <a href="index.jsp"><input type="button" value="Cancelar" id="cancelar"></a>
                     </footer>
                 </form>
             </section>

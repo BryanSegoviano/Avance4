@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css\indexstyles.css">
-        <title>Inicio de sesiÃ³n</title>
+        <title>Inicio de sesión</title>
     </head>
 
     <body>
@@ -33,8 +33,8 @@
                         <form action="IniciarSesion" method="POST">
                             <label><b>Usuario:</b></label>
                             <input class="cajaTexto" type="text" name="txtcorreo" placeholder="Introduzca su correo electronico" required>
-                            <label><b>ContraseÃ±a:</b></label>
-                            <input class="cajaTexto" type="password" name="txtpassword" placeholder="Introduzca su contraseÃ±a" required>
+                            <label><b>Contraseña:</b></label>
+                            <input class="cajaTexto" type="password" name="txtpassword" placeholder="Introduzca su contraseña" required>
                             <input type="submit" class="botonIngresar" value="Ingresar"/>
                         </form>
                     </div>
